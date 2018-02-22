@@ -4,22 +4,49 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleone = {
-    title: 'Article one by aditya',
-    heading:'Article one',
-    date: '22 feburary, 2018',
-    content: `
-             <p>
-               The article contains all the shit that runs through my mind.
-             </p>
-              <p>
-               Not so important paragraph. don't waste your time reaing this. Get a life 
-             </p>
-             <p>
-               if you are reading keep one thing in mind that you are a complete asshole fuckface dickhead.
-             </p>
-          </div>`
+var articles = {
     
+   'article-one': {  
+       title: 'Article one by aditya',
+       heading:'Article one',
+       date: '22 feburary, 2018',
+       content: `
+             <p>
+                The article contains all the shit that runs through my mind.
+             </p>
+             <p>
+                Not so important paragraph. don't waste your time reaing this. Get a life 
+             </p>
+             <p>
+                 if you are reading keep one thing in mind that you are a complete asshole fuckface dickhead.
+             </p> `
+             
+   } ,
+   'artile-two': {
+         title: 'Article two by aditya',
+         heading:'Article two'  ,
+     date: '23 feburary, 2018' ,
+         content:  `
+             <p>
+                The article two contains all the shit that runs through your mind.
+             </p>
+             <p>
+                Not so important paragraph. don't waste your time reaing this. Get a life 
+             </p> `
+           },
+    'article-three' : {
+          title: 'Article three by aditya',
+         heading:'Article three'  ,
+     date: '24 feburary, 2018' ,
+         content:  `
+             <p>
+                The article three contains all the shit that runs through everyone's mind.
+             </p>
+             <p>
+                Not so important paragraph. don't waste your time reaing this. Get a life asshole. 
+             </p> `
+    }
+           
 };
 function createTemplate (data){
     var title= data.title;
@@ -53,15 +80,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleone));
-});
-app.get('/article-two', function (req, res) {
-    res.send('Article two requested and will be served here');
-});
-
-app.get('/article-three', function (req, res) {
-    res.send('Article three requested and will be served here');
+app.get('/:articleName', function (req, res) {
+  var articleName = req.parans.articleName;    
+  res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
