@@ -22,7 +22,7 @@ var articles = {
              </p> `
              
    } ,
-   'artile-two': {
+   'article-two': {
          title: 'Article two by aditya',
          heading:'Article two'  ,
      date: '23 feburary, 2018' ,
