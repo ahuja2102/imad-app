@@ -1,5 +1,5 @@
-console.log('Loaded!');
-var button = document.getElementById("container");
+
+var button = document.getElementById('container');
 button.onclick = function() 
 {
     
