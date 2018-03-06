@@ -101,7 +101,7 @@ function hash(input) {
 app-get('/hash/:input', function(req, res) {
     
     var hashedString = hash(req.params.input, 'some-string');
-    res.send(hashString);
+    res.send(hashedString);
     
 });
 var pool = new Pool(config);
